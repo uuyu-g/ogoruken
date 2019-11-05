@@ -1,27 +1,34 @@
-# Ogoriken
+# Ogorukenとは
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.4.
+「今度奢るから...!」
 
-## Development server
+そう言われて助けてあげたことは数あれど、いざ奢ってもらえたことはどれくらいあるだろう。
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+奢る側が忘れないように。
+奢られる側も忘れないように。
 
-## Code scaffolding
+そんなあなたに**Ogoruken(奢る券)」**
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 概要
+**Ogoruken**を発行、譲渡、利用するためのサービス。
 
-## Build
+- Ogorukenを発行者に返すことで発行者に奢ってもらえる。
+- Ogorukenは誰でも発行できる。
+- Ogorukenは誰にでもあげられる。
+- Ogoruken1枚につき、一回奢ってもらえる。
+  - 奢るさいの金額はその時による。
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## 使用技術
+- NEM(NEM1予定)
+  - Ogorukenの発行
+  - Ogorukenの保管
+  - Ogorukenの送信
+- Angular
+- Firebase
+  - Hosting
+  - NEMとの連携
+- Github Actions
+  - CI/CD
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## TODO
+[TODO](TODO.md)
