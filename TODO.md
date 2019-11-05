@@ -9,3 +9,18 @@
 - [ ] Github Actionsの調査
 - [ ] Github Actionsの設定
 - [ ] TSlintからESlintに変更
+
+NEM
+- [ ] nem2-sdkのインストール
+
+見た目
+- [ ] favicon
+
+github
+- [ ] Github Projectの作成
+- [ ] tagでデプロイ
+
+firebase
+- [x] 初期設定
+- [x] ng/firebaseのインストール、設定
+- [x] firebaseに初期デプロイ
