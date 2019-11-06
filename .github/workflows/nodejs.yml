@@ -12,7 +12,16 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
+      - name: Cache node modules
+        uses: actions/cache@v1
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: Install Dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
         run: npm install
       - name: Build
         run: npm run build
@@ -21,6 +30,15 @@ jobs:
         with:
           name: dist
           path: dist
+      
+      - name: Slack notification
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_USERNAME: Github Actions # Optional.
+        uses: Ilshidur/action-slack@master
+        with:
+          args: 'A new commit has been pushed.'
+  
   deploy:
     name: Deploy
     needs: build
