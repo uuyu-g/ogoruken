@@ -26,10 +26,7 @@ jobs:
         npm run build
       env:
         CI: true
-    - name: GitHub Action for Firebase
-      uses: w9jds/firebase-action@v1.0
-      with: 
-        args: deploy --only hosting
-      env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+    - name: deploy to Firebase Hosting
+      run: |
+        npx firebase deploy --token=${{ secrets.FIREBASE_TOKEN }}
 
