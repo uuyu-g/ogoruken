@@ -24,7 +24,6 @@ jobs:
       run: |
         npm ci
         npm run build
-        npm test
     - name: deploy to Firebase Hosting
       run: |
         ./node_modules/.bin/firebase deploy --token=${{ secrets.FIREBASE_TOKEN }}
