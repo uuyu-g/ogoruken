@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version: [12.x]
 
     steps:
     - uses: actions/checkout@v1
@@ -24,6 +24,8 @@ jobs:
       run: |
         npm ci
         npm run build
+      env:
+        CI: true
     - name: deploy to Firebase Hosting
       run: |
         ./node_modules/.bin/firebase deploy --token=${{ secrets.FIREBASE_TOKEN }}
