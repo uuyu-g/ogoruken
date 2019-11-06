@@ -2,7 +2,7 @@ name: Node CI
 
 on:
   push:
-    branches: 
+    branches:
       - master
 
 jobs:
@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
+
       - name: Cache node modules
         uses: actions/cache@v1
         id: cache
@@ -20,17 +21,20 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+
       - name: Install Dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm install
+
       - name: Build
-        run: npm run build
+        run: npm run build:prod
+
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
           name: dist
           path: dist
-      
+
       - name: Slack notification
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
@@ -38,7 +42,7 @@ jobs:
         uses: Ilshidur/action-slack@master
         with:
           args: 'A new commit has been pushed.'
-  
+
   deploy:
     name: Deploy
     needs: build
@@ -46,10 +50,12 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
+
       - name: Download Artifact
         uses: actions/download-artifact@master
         with:
           name: dist
+
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
